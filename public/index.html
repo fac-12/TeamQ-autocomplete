@@ -8,7 +8,24 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+  <main>
+    <header class="heading">
+      <h1 class="heading__title"> What should Shannon name her baby? </h1>
+    </header>
+    <form class="search-form" action="/search" method="get">
+      <label for="search-box-id">
+        <input type="text" name="search-box" class="form__search-box" id='search-box-id' list="json-namelist">
+      </label>
+      <datalist id="json-nameslist">
+
+      </datalist>
+    </form>
+
+    <section class="display">
+        <h2 class="display__title"></h2>
+        <p class="display__info"></p>
+    </section>
+  </main>
 </body>
 <script src="script.js"></script>
 </html>
