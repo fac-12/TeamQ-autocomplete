@@ -29,9 +29,9 @@ var allNames = [
 var input = document.getElementById("search-box-id");
 var datalist = document.getElementById("json-nameslist");
 
-function getNames(){
+function getNames(str){
   var request = new XMLHttpRequest();
-
+  var url = '/search?'+str;
   request.onreadystatechange = function (){
     if(request.status === 200 && request.readyState === 4){
       var nameOptions = JSON.parse(request.responseText);
@@ -39,14 +39,15 @@ function getNames(){
         var option = document.createElement("option");
         option.value = person.name;
         datalist.appendChild(option);
-      })
+      });
     }
-  }
-  request.open("GET", "../public/examplenames.json", true);
+  };
+  request.open("GET", url, true);
   request.send();
 }
 
 
-input.addEventListener('keydown', function(){
-      getNames();
-})
+input.addEventListener('keypress', function(event){
+  var str = input.value+event.key;
+  getNames(str);
+});
