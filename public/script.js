@@ -43,6 +43,6 @@ function getNames(){
       })
     }
   }
-  request.open("GET", allNames, true);
+  request.open("GET", allNames.json , true);
   request.send();
 }
