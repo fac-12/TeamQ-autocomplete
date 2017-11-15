@@ -1,30 +1,30 @@
-var allNames = {
-{"name": "stephanie"},
-{"name": "Peter"},
-{"name": "Smith"},
-{"name": "Tanya"},
-{"name": "Georgina"},
-{"name": "Natalie"},
-{"name": "Hannah"},
-{"name": "Jamie"},
-{"name": "Tunde"},
-{"name": "Sophie"},
-{"name": "Stacey"},
-{"name": "Olamide"},
-{"name": "Olatunde"},
-{"name": "Olubanjo"},
-{"name": "Oluwatobi"},
-{"name": "Oluwatoyosi"},
-{"name": "James"},
-{"name": "Justina"},
-{"name": "Juliet"},
-{"name": "Javier"},
-{"name": "Justa"},
-{"name": "Naomi"},
-{"name": "Nicole"},
-{"name": "Natasha"},
-{"name": "Nancy"}
-}
+var allNames = [
+  {"name": "stephanie"},
+  {"name": "Peter"},
+  {"name": "Smith"},
+  {"name": "Tanya"},
+  {"name": "Georgina"},
+  {"name": "Natalie"},
+  {"name": "Hannah"},
+  {"name": "Jamie"},
+  {"name": "Tunde"},
+  {"name": "Sophie"},
+  {"name": "Stacey"},
+  {"name": "Olamide"},
+  {"name": "Olatunde"},
+  {"name": "Olubanjo"},
+  {"name": "Oluwatobi"},
+  {"name": "Oluwatoyosi"},
+  {"name": "James"},
+  {"name": "Justina"},
+  {"name": "Juliet"},
+  {"name": "Javier"},
+  {"name": "Justa"},
+  {"name": "Naomi"},
+  {"name": "Nicole"},
+  {"name": "Natasha"},
+  {"name": "Nancy"}
+];
 
 var input = document.getElementById("search-box-id");
 var datalist = document.getElementById("json-nameslist");
@@ -33,21 +33,15 @@ function getNames(){
   var request = new XMLHttpRequest();
 
   request.onreadystatechange = function (){
-    if(xhr.status === 200 && xhr.readyState === 4){
+    if(request.status === 200 && request.readyState === 4){
       var nameOptions = JSON.parse(request.responseText);
-
-      nameOptions.foreach(function(name){
+      nameOptions.forEach(function(person){
         var option = document.createElement("option");
-        option.value = name;
+        option.value = person.name;
         datalist.appendChild(option);
       })
-
-      input.placeholder = "name"
-    } else{
-      input.placeholder = "Couldnt load names options";
     }
   }
-  input.placeholder = "Loading names..."
-  request.open("GET", allNames, true);
+  request.open("GET", "../public/examplenames.json", true);
   request.send();
 }

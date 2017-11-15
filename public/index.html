@@ -14,7 +14,7 @@
     </header>
     <form class="search-form" action="/search" method="get">
       <label for="search-box-id">
-        <input type="text" name="search-box" class="form__search-box" id='search-box-id'>
+        <input type="text" name="search-box" class="form__search-box" id='search-box-id' list="json-nameslist" onkeydown="getNames()">
       </label>
       <datalist id="json-nameslist">
 
