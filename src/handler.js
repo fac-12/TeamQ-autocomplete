@@ -20,6 +20,7 @@ function staticFileHandler(request, response, url) {
     css: 'text/css',
     js: 'application/javascript',
     ico: 'image/x-icon',
+    json: 'application/json'
   };
 
   var extension = url.split('.')[1];
