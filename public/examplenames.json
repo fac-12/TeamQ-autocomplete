@@ -1,9 +1,7 @@
-
-
-{
-   {"name": "stephanie"},
-{"name": "Peter"},
-{"name": "Smith"},
+[
+  {"name": "stephanie"},
+  {"name": "Peter"},
+  {"name": "Smith"},
   {"name": "Tanya"},
   {"name": "Georgina"},
   {"name": "Natalie"},
@@ -26,4 +24,4 @@
   {"name": "Nicole"},
   {"name": "Natasha"},
   {"name": "Nancy"}
-}
+]
