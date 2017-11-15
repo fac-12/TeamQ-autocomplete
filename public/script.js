@@ -41,13 +41,8 @@ function getNames(){
         option.value = name;
         datalist.appendChild(option);
       })
-
-      input.placeholder = "name"
-    } else{
-      input.placeholder = "Couldnt load names options";
     }
   }
-  input.placeholder = "Loading names..."
   request.open("GET", allNames, true);
   request.send();
 }
