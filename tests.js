@@ -215,6 +215,28 @@ var testArr2 = [{
   },
 ];
 
+var testArr3 = [{
+    "age": "22",
+    "name": "Olamide"
+  },
+  {
+    "age": "29",
+    "name": "Olatunde"
+  },
+  {
+    "age": "30",
+    "name": "Olubanjo"
+  },
+  {
+    "age": "24",
+    "name": "Oluwatobi"
+  },
+  {
+    "age": "34",
+    "name": "Oluwatoyosi"
+  }
+];
+
 test('checkNames returns false if str1 longer than str2', function (t) {
   var actual = logic.checkNames('Jamieson', 'Jamie');
   var expected = false;
@@ -276,3 +298,25 @@ test('getNames returns correct array of objects', function (t) {
   t.deepEqual(actual, expected, 'getNames returns correct array of objects');
   t.end();
 });
+
+test('stripObject return array with only name value pair', function(t){
+  var actual = logic.stripObject(testArr3);
+  var expected = [{
+      "name": "Olamide"
+    },
+    {
+      "name": "Olatunde"
+    },
+    {
+      "name": "Olubanjo"
+    },
+    {
+      "name": "Oluwatobi"
+    },
+    {
+      "name": "Oluwatoyosi"
+    }
+  ];
+  t.deepEqual(actual, expected, "should return an array with only nae value pair");
+  t.end();
+})
