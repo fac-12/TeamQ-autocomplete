@@ -1,7 +1,15 @@
+<<<<<<< HEAD
 {
   {"name": "stephanie"},
   {"name": "Peter"},
   {"name": "Smith"},
+=======
+
+{
+   {"name": "stephanie"},
+{"name": "Peter"},
+{"name": "Smith"},
+>>>>>>> 857358d178d9477c01028dc9c4c86c539c3b8317
   {"name": "Tanya"},
   {"name": "Georgina"},
   {"name": "Natalie"},
