@@ -7,8 +7,17 @@ const getMatchedNames = function(str, allNames) {
   });
   //remove duplicates and return the first 25
   var limitedNames = limitNames(filteredNames);
-  return limitedNames;
+  var onlyNames = stripObject(limitedNames);
+  return onlyNames;
 };
+
+const stripObject = function(allNames) {
+  var onlyNamesArr = [];
+  allNames.forEach(function(obj){
+    onlyNamesArr.push({"name":obj.name});
+  })
+  return onlyNamesArr;
+}
 
 //remove duplicates and return the first 25
 const limitNames = function(nameArr) {
@@ -34,4 +43,4 @@ const checkNames = function(str1, str2) {
 };
 
 
-module.exports = {checkNames, limitNames, getMatchedNames};
+module.exports = {checkNames, limitNames, getMatchedNames, stripObject};
