@@ -1,12 +1,16 @@
 
-const getNames = function(str, allNames) {
+//Get a selection of names that start with the specified string (no duplicates and max 25)
+const getMatchedNames = function(str, allNames) {
+  //filter out the names from allNames array that start with the str
   var filteredNames = allNames.filter(function(data) {
     return checkNames(str, data.name);
   });
+  //remove duplicates and return the first 25
   var limitedNames = limitNames(filteredNames);
   return limitedNames;
 };
 
+//remove duplicates and return the first 25
 const limitNames = function(nameArr) {
   var noDup = [];
   nameArr.forEach(function(item) {
@@ -20,9 +24,8 @@ const limitNames = function(nameArr) {
   return noDup.slice(0,25);
 };
 
-
+//return true if str2 starts with str1, otherwise false
 const checkNames = function(str1, str2) {
-  //console.log(str1 + "," + str2);
   if(str1.length > str2.length) {
     return false;
   }
@@ -31,4 +34,4 @@ const checkNames = function(str1, str2) {
 };
 
 
-module.exports = {checkNames, limitNames, getNames};
+module.exports = {checkNames, limitNames, getMatchedNames};
