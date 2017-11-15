@@ -35,6 +35,7 @@ function getNames(str){
   request.onreadystatechange = function (){
     if(request.status === 200 && request.readyState === 4){
       var nameOptions = JSON.parse(request.responseText);
+      clearElement(datalist);
       nameOptions.forEach(function(person){
         var option = document.createElement("option");
         option.value = person.name;
@@ -46,6 +47,11 @@ function getNames(str){
   request.send();
 }
 
+function clearElement(element){
+  while (element.firstChild) {
+      element.removeChild(element.firstChild);
+  }
+}
 
 input.addEventListener('keypress', function(event){
   var str = input.value+event.key;
