@@ -45,3 +45,8 @@ function getNames(){
   request.open("GET", "../public/examplenames.json", true);
   request.send();
 }
+
+
+input.addEventListener('keydown', function(){
+      getNames();
+})
