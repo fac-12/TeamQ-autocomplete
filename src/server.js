@@ -1,5 +1,5 @@
 var http = require('http');
-var port = 8000;
+var port = process.env.PORT || 8000;
 var router = require('./router.js');
 var server = http.createServer(router);
 
