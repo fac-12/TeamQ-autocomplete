@@ -48,6 +48,7 @@ function searchHandler(request, response, url){
     }
     response.writeHead(200, {'Content-Type': 'application/json'});
     var nameArray = logic.getMatchedNames(searchValue, JSON.parse(file));
+    console.log(nameArray);
     response.end(JSON.stringify(nameArray));
   })
 }
