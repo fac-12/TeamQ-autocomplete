@@ -4,7 +4,6 @@ body{
 }
 .heading{
   text-align: center;
-  font-family: 'Boogaloo', cursive;
 }
 .form__search-box-label, .search-submit-btn-label{
   display: flex;
@@ -31,8 +30,11 @@ body{
   opacity: 0.9;
   display: inline-block;
   text-align: center;
+  font-family: 'Boogaloo', cursive;
+  padding: 0 0.5rem;
+  border-radius: 0.3rem;
+
 }
 .display-button-container{
   text-align: center;
 }
-
