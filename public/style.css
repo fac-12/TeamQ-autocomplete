@@ -1,23 +1,42 @@
 body{
-  background: url(./assets/giftly.png);
+  background: url(./assets/depositphotos_38093605-stock-illustration-art-stuff-vector-seamless-pattern.jpg);
   background-repeat: repeat;
 }
 .heading{
   text-align: center;
   font-family: 'Boogaloo', cursive;
 }
-.search-form{
+.form__search-box-label, .search-submit-btn-label{
   display: flex;
   justify-content: center;
 }
 .form__search-box{
   width: 21rem;
   padding: 0.5rem;
+  border-radius: 5px;
 }
-.search-submit-btn{
-  width: 5rem;
-  padding: 0.4rem;
-  margin-left: 1rem;
+.search-submit-btn, .display-button{
+  width: 7rem;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  border-radius: 0.4rem;
   font-size: 1rem;
-
+  border-radius: 10px
 }
+.display{
+  text-align: center;
+}
+.display__title, .heading__title{
+  background: white;
+  opacity: 0.9;
+  display: inline-block;
+  text-align: center;
+}
+.display-button-container{
+  text-align: center;
+}
+/*.display-button{
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  border-radius: 0.4rem;
+}*/
