@@ -42,8 +42,10 @@ input.addEventListener('keypress', function(event){
 
 searchForm.addEventListener('submit',function(e){
     e.preventDefault();
-    var url = '/name-data?'+input.value;
-    request(url, updateNameDisplay);
+    if(input.value !== ""){
+      var url = '/name-data?'+input.value;
+      request(url, updateNameDisplay);
+  }
 })
 
 function updateNameDisplay(nameObject){

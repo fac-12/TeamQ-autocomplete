@@ -10,15 +10,15 @@
     <link rel="stylesheet" href="public/style.css">
 </head>
 <body>
-  <main>
+  <main class="container">
     <header class="heading">
       <h1 class="heading__title"> What should Shannon name her baby? </h1>
     </header>
     <form id="search-form" class="search-form" action="/name-data" method="get">
-      <label for="search-box-id">
+      <label for="search-box-id" class="form__search-box-label">
         <input type="text" name="search-box" class="form__search-box" id='search-box-id' list="json-nameslist">
       </label>
-      <label for="search-submit">
+      <label for="search-submit" class="search-submit-btn-label">
         <button id="search-submit" class="search-submit-btn">
             This
         </button>
@@ -28,7 +28,9 @@
       </datalist>
     </form>
     <section class="display" id="display">
-        <button id="clear-graph">Clear Graph</button>
+        <div class="display-button-container">
+          <button class="display-button" id="clear-graph">Clear Graph</button>
+        </div>
         <h2 id="graph-title" class="display__title"></h2>
         <div id='graph-div' class="display__info"></div>
     </section>
