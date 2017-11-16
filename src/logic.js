@@ -5,19 +5,33 @@ const getMatchedNames = function(str, allNames) {
   var filteredNames = allNames.filter(function(data) {
     return checkNames(str, data.name);
   });
+  //sort by popularity
+  var sortedNames = sortBy2016(filteredNames);
   //remove duplicates and return the first 25
-  var limitedNames = limitNames(filteredNames);
+  var limitedNames = limitNames(sortedNames);
+  //strip extraneous data from objects
   var onlyNames = stripObject(limitedNames);
   return onlyNames;
 };
 
+//sort by popularity in 2016
+const sortBy2016 = function(nameArr) {
+  //clone array before sort
+  var sortedArr = nameArr.slice(0);
+  sortedArr.sort(function(a,b) {
+    return parseInt(b['2016'])-parseInt(a['2016']);
+  });
+  return sortedArr;
+};
+
+//strip off unnecessary data
 const stripObject = function(allNames) {
   var onlyNamesArr = [];
   allNames.forEach(function(obj){
     onlyNamesArr.push({"name":obj.name});
   })
   return onlyNamesArr;
-}
+};
 
 //remove duplicates and return the first 25
 const limitNames = function(nameArr) {
@@ -43,4 +57,4 @@ const checkNames = function(str1, str2) {
 };
 
 
-module.exports = {checkNames, limitNames, getMatchedNames, stripObject};
+module.exports = {getMatchedNames};

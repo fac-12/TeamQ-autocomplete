@@ -45,11 +45,16 @@ function searchHandler(request, response, url){
     if(error){
       response.writeHead(500, {'Content-Type': 'text/plain'});
       response.end('server error');
+      return;
     }
     response.writeHead(200, {'Content-Type': 'application/json'});
     var nameArray = logic.getMatchedNames(searchValue, JSON.parse(file));
     response.end(JSON.stringify(nameArray));
-  })
+  });
+}
+
+function nameDataHandler(request, response, url) {
+  
 }
 
 module.exports = {
