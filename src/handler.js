@@ -1,8 +1,8 @@
 var fs = require('fs');
 var path = require('path');
 var logic = require('./logic.js')
-var allNames = require('./allnames.json');
-
+var allNames = require('./example.json');
+console.log("allNames file: " + allNames);
 function homeHandler(request, response) {
   var filePath = path.join(__dirname, '..', 'public', 'index.html');
 
@@ -40,21 +40,16 @@ function staticFileHandler(request, response, url) {
 
 function searchHandler(request, response, url){
   var searchValue = url.split("?")[1];
-  var filePath = path.join(__dirname, "allnames.json");
-  fs.readFile(filePath, "utf8", function(error, file){
-    if(error){
-      response.writeHead(500, {'Content-Type': 'text/plain'});
-      response.end('server error');
-      return;
-    }
-    response.writeHead(200, {'Content-Type': 'application/json'});
-    var nameArray = logic.getMatchedNames(searchValue, JSON.parse(file));
-    response.end(JSON.stringify(nameArray));
-  });
+  response.writeHead(200, {'Content-Type': 'application/json'});
+  var nameArray = logic.getMatchedNames(searchValue, allNames);
+  response.end(JSON.stringify(nameArray));
 }
 
 function nameDataHandler(request, response, url) {
-  
+  var searchValue = url.split("?")[1];
+  response.writeHead(200, {'Content-Type': 'application/json'});
+  var nameArray = logic.getNameData(searchValue, JSON.parse(allNames));
+  response.end(JSON.stringify(nameArray));
 }
 
 module.exports = {

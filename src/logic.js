@@ -52,9 +52,22 @@ const checkNames = function(str1, str2) {
   if(str1.length > str2.length) {
     return false;
   }
-  var str2Mod = str2.slice(0, str1.length).toLowerCase();
-  return (str1 === str2Mod) ? true : false;
+  var str2Mod = str2.slice(0, str1.length);
+  return (str1.toLowerCase() === str2Mod.toLowerCase()) ? true : false;
 };
 
+const getNameData = function(str, allNames){
+    var foundName = allNames.find(function(object){
+      return object.name === str;
+    })
+    return foundName;
+}
 
-module.exports = {getMatchedNames};
+module.exports = {
+  getMatchedNames,
+  getNameData,
+  checkNames,
+  sortBy2016,
+  stripObject,
+  limitNames
+};
