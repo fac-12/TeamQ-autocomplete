@@ -57,6 +57,7 @@ const checkNames = function(str1, str2) {
 };
 
 const getNameData = function(str, allNames){
+  console.log("here");
     var foundName = allNames.find(function(object){
       return object.name === str;
     })
