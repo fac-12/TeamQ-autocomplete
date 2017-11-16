@@ -54,7 +54,7 @@ var searchForm = document.querySelector('.search-form');
 
 function getNames(str){
   var request = new XMLHttpRequest();
-  var url = '/search?'+str;
+  var url = '/search?'+str.toLowerCase();
   request.onreadystatechange = function (){
     if(request.status === 200 && request.readyState === 4){
       var nameOptions = JSON.parse(request.responseText);
