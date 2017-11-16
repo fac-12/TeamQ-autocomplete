@@ -6,6 +6,7 @@ var graphTitle = document.getElementById('graph-title');
 var submitBtn = document.querySelector('submit')
 var searchForm = document.querySelector('.search-form');
 var clearGraph = document.getElementById('clear-graph');
+var graphDiv = document.getElementsByClassName('svg-container');
 
 function updateDataList(responseArr){
   clearElement(datalist);
@@ -53,6 +54,9 @@ function updateNameDisplay(nameObject){
     input.value = "";
     graphTitle.textContent = "Most recently searched name: " + nameObject.name;
     makePlotly(nameObject);
+    console.log(graphDiv);
+    graphDiv[0].style.margin = "0px auto";
+
   } else {
     graphTitle.textContent = input.value +" is not a common enough name to be in our database";
     input.value = "";
