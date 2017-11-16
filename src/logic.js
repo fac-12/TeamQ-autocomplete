@@ -19,7 +19,7 @@ const sortBy2016 = function(nameArr) {
   //clone array before sort
   var sortedArr = nameArr.slice(0);
   sortedArr.sort(function(a,b) {
-    return parseInt(b['2016'])-parseInt(a['2016']);
+    return sumAllYears(b) - sumAllYears(a);
   });
   return sortedArr;
 };
@@ -52,9 +52,50 @@ const checkNames = function(str1, str2) {
   if(str1.length > str2.length) {
     return false;
   }
-  var str2Mod = str2.slice(0, str1.length).toLowerCase();
-  return (str1 === str2Mod) ? true : false;
+  var str2Mod = str2.slice(0, str1.length);
+  return (str1.toLowerCase() === str2Mod.toLowerCase()) ? true : false;
 };
 
+const getNameData = function(str, allNames){
+    var foundName = allNames.filter(function(object){
+      return object.name === str;
+    });
+    if(foundName.length > 1){
+      return combineGenders(foundName)
+    } else if(foundName.length === 1){
+      return foundName[0];
+    } else{
+      return {};
+    }
+}
 
-module.exports = {getMatchedNames};
+const combineGenders = function(foundName){
+  combineName = {};
+  for(key in foundName[0]){
+    if(key !== 'name' && key !== 'gender'){
+      combineName[key] = parseInt(foundName[0][key]) + parseInt(foundName[1][key]);
+    } else{
+      combineName.name = foundName[0].name;
+    }
+  }
+  return combineName;
+}
+
+const sumAllYears = function (nameObj){
+  var totalNamed = 0;
+  for(key in nameObj){
+    if(key !== 'name' && key !== 'gender'){
+      totalNamed += parseInt(nameObj[key]);
+    }
+  }
+  return totalNamed;
+}
+
+module.exports = {
+  getMatchedNames,
+  getNameData,
+  checkNames,
+  sortBy2016,
+  stripObject,
+  limitNames
+};
