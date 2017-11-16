@@ -317,6 +317,15 @@ test('stripObject return array with only name value pair', function(t){
       "name": "Oluwatoyosi"
     }
   ];
-  t.deepEqual(actual, expected, "should return an array with only nae value pair");
+  t.deepEqual(actual, expected, "should return an array with only name value pair");
   t.end();
-})
+});
+test('getNameData return the name object of the string searched',function(t){
+  var actual = logic.getNameData("Olatunde", testArr3);
+  var expected =   {
+      "age": "29",
+      "name": "Olatunde"
+    };
+  t.deepEqual(actual, expected, "should return an object with the name olatunde");
+  t.end();
+});
