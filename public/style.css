@@ -22,9 +22,11 @@ body{
   font-size: 1rem;
   border-radius: 10px
 }
+
 .display{
   text-align: center;
 }
+
 .display__title, .heading__title{
   background: white;
   opacity: 0.9;
@@ -33,8 +35,23 @@ body{
   font-family: 'Boogaloo', cursive;
   padding: 0 0.5rem;
   border-radius: 0.3rem;
-
 }
+
+.display__info{
+  margin: 0 auto;
+}
+
+.plot-container {
+  margin: 0 auto;
+}
+.plotly{
+  margin: 0 auto;
+}
+
+div.svg-container{
+  margin: 0 auto;
+}
+
 .display-button-container{
   text-align: center;
 }
