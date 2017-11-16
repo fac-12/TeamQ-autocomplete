@@ -1,5 +1,22 @@
-.red {
-  color: red;
+body{
+  background: url(./assets/giftly.png);
+  background-repeat: repeat;
 }
-
-
+.heading{
+  text-align: center;
+  font-family: 'Boogaloo', cursive;
+}
+.search-form{
+  display: flex;
+  justify-content: center;
+}
+.form__search-box{
+  width: 21rem;
+  padding: 0.5rem;
+}
+.search-submit-btn{
+  width: 5rem;
+  padding: 0.4rem;
+  margin-left: 1rem;
+  font-size: 1rem;
+}
