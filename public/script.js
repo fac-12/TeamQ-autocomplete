@@ -1,9 +1,11 @@
 var input = document.getElementById("search-box-id");
 var datalist = document.getElementById("json-nameslist");
 var display = document.getElementById('display');
-var displayData = document.getElementById('display').lastElementChild;
+var displayData = document.getElementById('graph-div');
+var graphTitle = document.getElementById('graph-title');
 var submitBtn = document.querySelector('submit')
 var searchForm = document.querySelector('.search-form');
+var clearGraph = document.getElementById('clear-graph');
 
 function updateDataList(responseArr){
   clearElement(datalist);
@@ -41,13 +43,18 @@ input.addEventListener('keypress', function(event){
 searchForm.addEventListener('submit',function(e){
     e.preventDefault();
     var url = '/name-data?'+input.value;
-    input.value = "";
     request(url, updateNameDisplay);
 })
 
 function updateNameDisplay(nameObject){
-  display.firstElementChild.textContent = nameObject.name;
-  makePlotly(nameObject);
+  if (Object.keys(nameObject).length>0) {
+    input.value = "";
+    graphTitle.textContent = "Most recently searched name: " + nameObject.name;
+    makePlotly(nameObject);
+  } else {
+    graphTitle.textContent = input.value +" is not a common enough name to be in our database";
+    input.value = "";
+  }
 }
 
 function makePlotly(object){
@@ -61,7 +68,13 @@ function makePlotly(object){
   }
   Plotly.plot( displayData, [{
     x: xArr,
-    y: yArr
+    y: yArr,
+    name: object.name
   }], {margin: {t:0}});
   Plotly.BUILD;
-};
+}
+
+clearGraph.addEventListener('click', function() {
+  graphTitle.textContent = "";
+  Plotly.purge(displayData);
+});

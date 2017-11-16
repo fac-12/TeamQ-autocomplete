@@ -58,7 +58,7 @@ const checkNames = function(str1, str2) {
 
 const getNameData = function(str, allNames){
     var foundName = allNames.filter(function(object){
-      return object.name === str;
+      return object.name.toLowerCase() === str.toLowerCase();
     });
     if(foundName.length > 1){
       return combineGenders(foundName)
