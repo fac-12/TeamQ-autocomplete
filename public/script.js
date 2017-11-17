@@ -7,6 +7,7 @@ var submitBtn = document.querySelector('submit')
 var searchForm = document.getElementById('search-form');
 var clearGraph = document.getElementById('clear-graph');
 var graphDiv = document.getElementsByClassName('svg-container');
+var gd;
 
 function request(url, callback) {
   var xhr = new XMLHttpRequest();
@@ -44,6 +45,7 @@ function updateNameDisplay(nameObject){
     clearGraph.className = "display-button";
     graphDiv[0].style.margin = "0px auto";
   } else {
+    graphTitle.className = "display__title";
     graphTitle.textContent = nameObject.name +" is not a common enough name to be in our database";
   }
 }
@@ -57,7 +59,16 @@ function makePlotly(object){
         yArr.push(object[key]);
     }
   }
-  Plotly.plot( displayData, [{
+
+  var d3 = Plotly.d3;
+  
+  var gd3 = d3.select('#graph-div').style({
+    width: 90 + '%',
+    height: 100 + '%'
+  });
+  gd = gd3.node();
+
+  Plotly.plot( gd, [{
     x: xArr,
     y: yArr,
     name: object.name
@@ -71,6 +82,10 @@ function makePlotly(object){
   }});
   Plotly.BUILD;
 }
+
+window.onresize = function() {
+  Plotly.Plots.resize(gd)
+};
 
 input.addEventListener('keypress', function(event){
   var str = input.value+event.key;
