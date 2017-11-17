@@ -29,7 +29,6 @@ function clearElement(element){
 
 function updateDataList(responseArr){
   clearElement(datalist);
-  console.log("data list is "+responseArr.length);
   if (responseArr.length === 0) {
     input.className = "form__search-box red";
   } else {
@@ -96,7 +95,6 @@ window.onresize = function() {
 input.addEventListener('keyup', function(event){
   var str = input.value;
   if (str.length>0) {
-    console.log("update with "+str);
     var url = '/search?'+str.toLowerCase();
     request(url, updateDataList);
   }
