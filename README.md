@@ -18,7 +18,7 @@ When the client receives the requested data object, the historical year data is 
 
 ## Known Issues
 
-- At the smallest level, the function `sortBy2016` in logic.js needs to be renamed `sortByPop` to reflect it’s actual purpose. Also, one can search the same name multiple times and the graph will add 
+- one can search the same name multiple times and the graph will add it.
 
 - At a mid-sized level, most of our logic.js functions were written with tests, but a couple of them were not, so should have them added retroactively.
 
