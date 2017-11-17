@@ -280,10 +280,10 @@ test('limitNames returns only unique items', function (t) {
 test('getNames returns correct array of objects', function (t) {
   var actual = logic.getMatchedNames('Ol', testArr);
   var expected = [{
-      "name": "Olamide"
+      "name": "Olatunde"
     },
     {
-      "name": "Olatunde"
+      "name": "Olamide"
     },
     {
       "name": "Olubanjo"
