@@ -13,23 +13,26 @@
   <main class="container">
     <header class="heading">
       <h1 class="heading__title"> What should Shannon name her baby? </h1>
+      <div>
+        <p class="heading__subtitle">(a look at baby name trends in the U.S. since 1975)</p>
+      </div>
     </header>
-    <form id="search-form" class="search-form" action="/name-data" method="get">
+    <form id="search-form" class="form__search-form" action="/name-data" method="get">
       <label for="search-box-id" class="form__search-box-label">
-        <input type="text" name="search-box" class="form__search-box" id='search-box-id' list="json-nameslist">
+        <input type="text" name="search-box" class="form__search-box" id='search-box-id' list="json-nameslist" required>
       </label>
       <label for="search-submit" class="search-submit-btn-label">
-        <button id="search-submit" class="search-submit-btn">Search</button>
+        <button type="submit" id="search-submit" class="search-submit-btn">Search</button>
+      </label>
+      <label for="clear-graph" class="clear-graph-btn-label">
+        <button type="button" class="display-button hide" id="clear-graph">Clear Graph</button>
       </label>
       <datalist id="json-nameslist">
 
       </datalist>
     </form>
     <section class="display" id="display">
-        <div class="display-button-container">
-          <button class="display-button" id="clear-graph">Clear Graph</button>
-        </div>
-        <h2 id="graph-title" class="display__title"></h2>
+        <h2 id="graph-title" class="display__title hide"></h2>
         <div id='graph-div' class="display__info"></div>
     </section>
   </main>

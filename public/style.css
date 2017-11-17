@@ -5,16 +5,27 @@ body{
 .heading{
   text-align: center;
 }
-.form__search-box-label, .search-submit-btn-label{
+
+.form__search-form {
   display: flex;
   justify-content: center;
 }
-.form__search-box{
+.form__search-box-label, .search-submit-btn-label, .clear-graph-btn-label {
+  display: flex;
+  justify-content: center;
+  margin: 5px;
+}
+
+.search-submit-btn-label, .clear-graph-btn-label {
+  position: relative;
+  top: -3px;
+}
+.form__search-box {
   width: 21rem;
   padding: 0.5rem;
   border-radius: 5px;
 }
-.search-submit-btn, .display-button{
+.search-submit-btn, .display-button {
   width: 7rem;
   padding: 0.5rem;
   margin-top: 0.5rem;
@@ -23,18 +34,28 @@ body{
   border-radius: 10px
 }
 
+.display-button {
+  width: 9rem;
+}
+
 .display{
   text-align: center;
 }
 
-.display__title, .heading__title{
-  background: white;
-  opacity: 0.9;
+.display__title, .heading__title, .heading__subtitle {
+  background: rgba(255, 255, 255, 0.9);
+  opacity: 1;
   display: inline-block;
   text-align: center;
   font-family: 'Boogaloo', cursive;
-  padding: 0 0.5rem;
+  padding: 0.5rem 0.5rem;
   border-radius: 0.3rem;
+}
+
+.heading__subtitle {
+  position: relative;
+  margin-top: -15px;
+  font-size: 1.5rem;
 }
 
 .display__info{
@@ -52,6 +73,6 @@ div.svg-container{
   margin: 0 auto;
 }
 
-.display-button-container{
-  text-align: center;
+.hide {
+  display: none;
 }
