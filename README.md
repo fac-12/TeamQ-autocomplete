@@ -27,5 +27,6 @@ When the client receives the requested data object, the historical year data is 
 ## If we had more time
 
 - Give the choice between seeing raw numbers and percentages, which better reflect relative popularity. 
+- Add polyfill for datalist as not compatible with internet explorer
 - Finesse the CSS & display of the plotly graph.
 
