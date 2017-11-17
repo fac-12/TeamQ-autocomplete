@@ -4,7 +4,7 @@ var logic = require('./logic.js');
 function router(request, response) {
   var endpoint = request.url;
   console.log(endpoint);
-  if (endpoint === "/" | endpoint === "/index.html") {
+  if (endpoint === "/" || endpoint === "/index.html") {
     homeHandler(request, response);
   } else if (endpoint.indexOf('/public') !== -1) {
     staticFileHandler(request, response, endpoint);
