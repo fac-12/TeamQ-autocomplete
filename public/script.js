@@ -48,6 +48,14 @@ function updateNameDisplay(nameObject){
   }
 }
 
+var d3 = Plotly.d3;
+
+var gd3 = d3.select('#graph-div').style({
+  width: 90 + '%',
+  height: 100 + '%'
+});
+var gd = gd3.node();
+
 function makePlotly(object){
   var xArr = [];
   var yArr = [];
@@ -57,7 +65,8 @@ function makePlotly(object){
         yArr.push(object[key]);
     }
   }
-  Plotly.plot( displayData, [{
+
+  Plotly.plot( gd, [{
     x: xArr,
     y: yArr,
     name: object.name
@@ -71,6 +80,10 @@ function makePlotly(object){
   }});
   Plotly.BUILD;
 }
+
+window.onresize = function() {
+  Plotly.Plots.resize(gd)
+};
 
 input.addEventListener('keypress', function(event){
   var str = input.value+event.key;
