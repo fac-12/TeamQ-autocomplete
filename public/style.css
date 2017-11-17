@@ -21,11 +21,17 @@ body{
   position: relative;
   top: -3px;
 }
+
 .form__search-box {
   width: 21rem;
   padding: 0.5rem;
   border-radius: 5px;
 }
+
+.red {
+  outline-color: red;
+}
+
 .search-submit-btn, .display-button {
   width: 7rem;
   padding: 0.5rem;

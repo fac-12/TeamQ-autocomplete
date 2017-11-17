@@ -29,11 +29,16 @@ function clearElement(element){
 
 function updateDataList(responseArr){
   clearElement(datalist);
-  responseArr.forEach(function(person){
-    var option = document.createElement("option");
-    option.value = person.name;
-    datalist.appendChild(option);
-  });
+  if (responseArr.length === 0) {
+    input.className = "form__search-box red";
+  } else {
+    input.className = "form__search-box";
+    responseArr.forEach(function(person){
+      var option = document.createElement("option");
+      option.value = person.name;
+      datalist.appendChild(option);
+    });
+  }
 }
 
 function updateNameDisplay(nameObject){
@@ -87,10 +92,12 @@ window.onresize = function() {
   Plotly.Plots.resize(gd)
 };
 
-input.addEventListener('keypress', function(event){
-  var str = input.value+event.key;
-  var url = '/search?'+str.toLowerCase();
-  request(url, updateDataList);
+input.addEventListener('keyup', function(event){
+  var str = input.value;
+  if (str.length>0) {
+    var url = '/search?'+str.toLowerCase();
+    request(url, updateDataList);
+  }
 });
 
 searchForm.addEventListener('submit',function(e){
