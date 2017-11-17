@@ -26,11 +26,13 @@ const sortByPop = function(nameArr) {
 
 //strip off unnecessary data
 const stripObject = function(allNames) {
-  let onlyNamesArr = [];
-  allNames.forEach(function(obj){
-    onlyNamesArr.push({"name":obj.name});
+  return allNames.map(function(obj){
+    let rObj = {};
+    if(obj.name){
+        rObj["name"] = obj.name;
+    }
+    return rObj;
   })
-  return onlyNamesArr;
 };
 
 //remove duplicates and return the first 25
@@ -49,11 +51,7 @@ const limitNames = function(nameArr) {
 
 //return true if str2 starts with str1, otherwise false
 const checkNames = function(str1, str2) {
-  if(str1.length > str2.length) {
-    return false;
-  }
-  let str2Mod = str2.slice(0, str1.length);
-  return (str1.toLowerCase() === str2Mod.toLowerCase()) ? true : false;
+  return str2.toLowerCase().startsWith(str1.toLowerCase())
 };
 
 const getNameData = function(str, allNames){
