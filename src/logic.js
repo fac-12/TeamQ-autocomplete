@@ -6,7 +6,7 @@ const getMatchedNames = function(str, allNames) {
     return checkNames(str, data.name);
   });
   //sort by popularity
-  var sortedNames = sortBy2016(filteredNames);
+  var sortedNames = sortByPop(filteredNames);
   //remove duplicates and return the first 25
   var limitedNames = limitNames(sortedNames);
   //strip extraneous data from objects
@@ -14,8 +14,8 @@ const getMatchedNames = function(str, allNames) {
   return onlyNames;
 };
 
-//sort by popularity in 2016
-const sortBy2016 = function(nameArr) {
+//sort by popularity over all years
+const sortByPop = function(nameArr) {
   //clone array before sort
   var sortedArr = nameArr.slice(0);
   sortedArr.sort(function(a,b) {
@@ -95,7 +95,7 @@ module.exports = {
   getMatchedNames,
   getNameData,
   checkNames,
-  sortBy2016,
+  sortByPop,
   stripObject,
   limitNames
 };

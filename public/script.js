@@ -8,15 +8,6 @@ var searchForm = document.getElementById('search-form');
 var clearGraph = document.getElementById('clear-graph');
 var graphDiv = document.getElementsByClassName('svg-container');
 
-function updateDataList(responseArr){
-  clearElement(datalist);
-  responseArr.forEach(function(person){
-    var option = document.createElement("option");
-    option.value = person.name;
-    datalist.appendChild(option);
-  });
-}
-
 function request(url, callback) {
   var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function() {
@@ -35,20 +26,14 @@ function clearElement(element){
   }
 }
 
-input.addEventListener('keypress', function(event){
-  var str = input.value+event.key;
-  var url = '/search?'+str.toLowerCase();
-  request(url, updateDataList);
-});
-
-searchForm.addEventListener('submit',function(e){
-    e.preventDefault();
-    if(input.value !== ""){
-      var url = '/name-data?'+input.value;
-      request(url, updateNameDisplay);
-  }
-  input.value = "";
-});
+function updateDataList(responseArr){
+  clearElement(datalist);
+  responseArr.forEach(function(person){
+    var option = document.createElement("option");
+    option.value = person.name;
+    datalist.appendChild(option);
+  });
+}
 
 function updateNameDisplay(nameObject){
   clearElement(datalist);
@@ -86,6 +71,21 @@ function makePlotly(object){
   }});
   Plotly.BUILD;
 }
+
+input.addEventListener('keypress', function(event){
+  var str = input.value+event.key;
+  var url = '/search?'+str.toLowerCase();
+  request(url, updateDataList);
+});
+
+searchForm.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(input.value !== ""){
+      var url = '/name-data?'+input.value;
+      request(url, updateNameDisplay);
+  }
+  input.value = "";
+});
 
 clearGraph.addEventListener('click', function() {
   graphTitle.textContent = "";
