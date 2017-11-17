@@ -65,7 +65,7 @@ const getNameData = function(str, allNames){
     } else if(foundName.length === 1){
       return foundName[0];
     } else{
-      return {};
+      return {name: str};
     }
 }
 

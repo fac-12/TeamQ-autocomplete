@@ -4,7 +4,7 @@ var display = document.getElementById('display');
 var displayData = document.getElementById('graph-div');
 var graphTitle = document.getElementById('graph-title');
 var submitBtn = document.querySelector('submit')
-var searchForm = document.querySelector('.search-form');
+var searchForm = document.getElementById('search-form');
 var clearGraph = document.getElementById('clear-graph');
 var graphDiv = document.getElementsByClassName('svg-container');
 
@@ -47,26 +47,26 @@ searchForm.addEventListener('submit',function(e){
       var url = '/name-data?'+input.value;
       request(url, updateNameDisplay);
   }
-})
+  input.value = "";
+});
 
 function updateNameDisplay(nameObject){
-  if (Object.keys(nameObject).length>0) {
-    input.value = "";
+  clearElement(datalist);
+  if (Object.keys(nameObject).length>1) {
+    graphTitle.className = "display__title";
     graphTitle.textContent = "Most recently searched name: " + nameObject.name;
     makePlotly(nameObject);
-    console.log(graphDiv);
+    clearGraph.className = "display-button";
     graphDiv[0].style.margin = "0px auto";
-
   } else {
-    graphTitle.textContent = input.value +" is not a common enough name to be in our database";
-    input.value = "";
+    graphTitle.textContent = nameObject.name +" is not a common enough name to be in our database";
   }
 }
 
 function makePlotly(object){
   var xArr = [];
   var yArr = [];
-  for (key in object){
+  for (var key in object){
     if (key !== 'name' && key !== 'gender'){
         xArr.push(key);
         yArr.push(object[key]);
@@ -76,11 +76,20 @@ function makePlotly(object){
     x: xArr,
     y: yArr,
     name: object.name
-  }], {margin: {t:0}});
+  }], {
+  margin: {
+    l: 50,
+    r: 50,
+    b: 50,
+    t: 50,
+    pad: 4
+  }});
   Plotly.BUILD;
 }
 
 clearGraph.addEventListener('click', function() {
   graphTitle.textContent = "";
   Plotly.purge(displayData);
+  clearGraph.className = "display-button hide";
+  graphTitle.className = "display__title hide";
 });
