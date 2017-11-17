@@ -9,6 +9,7 @@ body{
 .form__search-form {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 .form__search-box-label, .search-submit-btn-label, .clear-graph-btn-label {
   display: flex;
@@ -75,4 +76,13 @@ div.svg-container{
 
 .hide {
   display: none;
+}
+
+@media screen and (max-width: 500px) {
+  .form__search-box {
+    width: 12rem;
+  }
+  .search-submit-btn {
+    width: 5rem;
+  }
 }
