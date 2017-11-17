@@ -66,7 +66,7 @@ body{
 }
 
 .display__info{
-  margin: 0 auto;
+  margin: 20px auto;
 }
 
 .plot-container {
@@ -83,6 +83,10 @@ div.svg-container{
 .hide {
   display: none;
 }
+
+/* .display__info {
+  border: 2px solid black;
+} */
 
 @media screen and (max-width: 500px) {
   .form__search-box {

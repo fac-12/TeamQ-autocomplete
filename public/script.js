@@ -44,14 +44,19 @@ function updateDataList(responseArr){
 function updateNameDisplay(nameObject){
   clearElement(datalist);
   if (Object.keys(nameObject).length>1) {
-    graphTitle.className = "display__title";
-    graphTitle.textContent = "Most recently searched name: " + nameObject.name;
+    graphTitle.className = "display__title hide";
     makePlotly(nameObject);
+    Plotly.relayout(gd,{title: "Most recently searched name: " + nameObject.name});
     clearGraph.className = "display-button";
     graphDiv[0].style.margin = "0px auto";
   } else {
-    graphTitle.className = "display__title";
-    graphTitle.textContent = nameObject.name +" is not a common enough name to be in our database";
+    if (clearGraph.className == "display-button hide") {
+      graphTitle.className = "display__title";
+      graphTitle.textContent = nameObject.name +" is not a common enough name to be in our database";
+    } else {
+      Plotly.relayout(gd,{title: nameObject.name +" is not a common enough name to be in our database"});  
+    }
+    
   }
 }
 
@@ -77,13 +82,29 @@ function makePlotly(object){
     x: xArr,
     y: yArr,
     name: object.name
-  }], {
+  }], {title: "Most recently searched name: "+object.name,
   margin: {
-    l: 50,
-    r: 50,
-    b: 50,
-    t: 50,
-    pad: 4
+    l: 80,
+    r: 80,
+    b: 80,
+    t: 80,
+    pad: 8
+  },
+  xaxis: {
+    title: 'Year',
+    titlefont: {
+      family: 'Arial, san-serif',
+      size: 14,
+      color: '#888888'
+    }
+  },
+  yaxis: {
+    title: 'Number of Babies',
+    titlefont: {
+      family: 'Arial, san-serif',
+      size: 14,
+      color: '#888888'
+    }
   }});
   Plotly.BUILD;
 }
@@ -110,7 +131,6 @@ searchForm.addEventListener('submit',function(e){
 });
 
 clearGraph.addEventListener('click', function() {
-  graphTitle.textContent = "";
   Plotly.purge(displayData);
   clearGraph.className = "display-button hide";
   graphTitle.className = "display__title hide";
