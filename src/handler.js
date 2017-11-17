@@ -29,12 +29,18 @@ function staticFileHandler(request, response, url) {
   var filePath = path.join(__dirname, '..', url);
 
   fs.readFile(filePath, function(error, file) {
-    if (error) {
-      response.writeHead(500, {'Content-Type': 'text/plain'});
-      response.end('server error');
+    if (error && error.code === 'ENOENT') {
+      response.writeHead(404, {'Content-Type': 'text/plain'});
+      response.end('404, NOT FOUND');
     }
+    else if (error) {
+      response.writeHead(500, {'Content-Type': 'text/plain'});
+      response.end('SERVER ERROR');
+    }
+    else {
     response.writeHead(200, 'Content-Type: ' + extensionType[extension]);
     response.end(file);
+  }
   });
 }
 

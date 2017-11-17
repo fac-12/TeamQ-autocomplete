@@ -2,22 +2,22 @@
 //Get a selection of names that start with the specified string (no duplicates and max 25)
 const getMatchedNames = function(str, allNames) {
   //filter out the names from allNames array that start with the str
-  var filteredNames = allNames.filter(function(data) {
+  const filteredNames = allNames.filter(function(data) {
     return checkNames(str, data.name);
   });
   //sort by popularity
-  var sortedNames = sortByPop(filteredNames);
+  const sortedNames = sortByPop(filteredNames);
   //remove duplicates and return the first 25
-  var limitedNames = limitNames(sortedNames);
+  const limitedNames = limitNames(sortedNames);
   //strip extraneous data from objects
-  var onlyNames = stripObject(limitedNames);
+  const onlyNames = stripObject(limitedNames);
   return onlyNames;
 };
 
 //sort by popularity over all years
 const sortByPop = function(nameArr) {
   //clone array before sort
-  var sortedArr = nameArr.slice(0);
+  let sortedArr = nameArr.slice(0);
   sortedArr.sort(function(a,b) {
     return sumAllYears(b) - sumAllYears(a);
   });
@@ -26,18 +26,20 @@ const sortByPop = function(nameArr) {
 
 //strip off unnecessary data
 const stripObject = function(allNames) {
-  var onlyNamesArr = [];
-  allNames.forEach(function(obj){
-    onlyNamesArr.push({"name":obj.name});
+  return allNames.map(function(obj){
+    let rObj = {};
+    if(obj.name){
+        rObj["name"] = obj.name;
+    }
+    return rObj;
   })
-  return onlyNamesArr;
 };
 
 //remove duplicates and return the first 25
 const limitNames = function(nameArr) {
-  var noDup = [];
+  let noDup = [];
   nameArr.forEach(function(item) {
-    var exists = noDup.find(function(obj) {
+    const exists = noDup.find(function(obj) {
       return obj.name == item.name;
     });
     if (!exists) {
@@ -49,15 +51,11 @@ const limitNames = function(nameArr) {
 
 //return true if str2 starts with str1, otherwise false
 const checkNames = function(str1, str2) {
-  if(str1.length > str2.length) {
-    return false;
-  }
-  var str2Mod = str2.slice(0, str1.length);
-  return (str1.toLowerCase() === str2Mod.toLowerCase()) ? true : false;
+  return str2.toLowerCase().startsWith(str1.toLowerCase())
 };
 
 const getNameData = function(str, allNames){
-    var foundName = allNames.filter(function(object){
+    const foundName = allNames.filter(function(object){
       return object.name.toLowerCase() === str.toLowerCase();
     });
     if(foundName.length > 1){
@@ -82,7 +80,7 @@ const combineGenders = function(foundName){
 }
 
 const sumAllYears = function (nameObj){
-  var totalNamed = 0;
+  let totalNamed = 0;
   for(key in nameObj){
     if(key !== 'name' && key !== 'gender'){
       totalNamed += parseInt(nameObj[key]);
