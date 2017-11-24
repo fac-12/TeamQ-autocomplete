@@ -21,11 +21,17 @@ body{
   position: relative;
   top: -3px;
 }
+
 .form__search-box {
   width: 21rem;
   padding: 0.5rem;
   border-radius: 5px;
 }
+
+.red {
+  outline-color: red;
+}
+
 .search-submit-btn, .display-button {
   width: 7rem;
   padding: 0.5rem;
@@ -60,7 +66,7 @@ body{
 }
 
 .display__info{
-  margin: 0 auto;
+  margin: 20px auto;
 }
 
 .plot-container {
@@ -77,6 +83,10 @@ div.svg-container{
 .hide {
   display: none;
 }
+
+/* .display__info {
+  border: 2px solid black;
+} */
 
 @media screen and (max-width: 500px) {
   .form__search-box {
